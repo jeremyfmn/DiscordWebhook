@@ -2,4 +2,10 @@
     <string name="app_name">DiscordWebhook</string>
     <string name="enter_webhook_link">Entrez le lien du webhook ici</string>
     <string name="ok">OK</string>
+    <string name="enter_custom_message">Entrez votre message</string>
+    <string name="send">Envoyer</string>
+    <string name="tv_post_from_subreddit">Poster une image d\'un subreddit</string>
+    <string name="or">ou</string>
+    <string name="reddit_base_url">www.reddit.com/r/</string>
+    <string name="your_subreddit">votre subreddit</string>
 </resources>

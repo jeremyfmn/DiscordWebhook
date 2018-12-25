@@ -3,4 +3,5 @@
     <color name="colorPrimary">#2C2F33</color>
     <color name="colorPrimaryDark">#23272A</color>
     <color name="colorAccent">#FFFFFF</color>
+    <color name="redditColor">#FF4301</color>
 </resources>
