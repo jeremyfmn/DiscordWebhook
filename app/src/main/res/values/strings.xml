@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DiscordWebhook</string>
+    <string name="enter_webhook_link">Entrez le lien du webhook ici</string>
+    <string name="ok">OK</string>
+</resources>
