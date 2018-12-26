@@ -30,14 +30,14 @@ class MessageActivity : AppCompatActivity() {
         mCustomMessageSendButton.setOnClickListener {
             val message = mCustomMessageEditText.text.toString()
             if(!TextUtils.isEmpty(message)) {
-                mMessageViewModel.sendCustomMessage(this ,message)
+                mMessageViewModel.sendToDiscord(this ,"{\"content\": \"$message\"}")
             }
         }
 
         mCustomSubredditSendButton.setOnClickListener {
             val subreddit = mCustomSubredditEditText.text.toString()
-            if(TextUtils.isEmpty(subreddit)){
-                mMessageViewModel.sendFromSubreddit(subreddit)
+            if(!TextUtils.isEmpty(subreddit)){
+                mMessageViewModel.sendFromSubreddit(this, subreddit)
             }
 
         }
