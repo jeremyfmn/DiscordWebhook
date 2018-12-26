@@ -35,11 +35,11 @@ class MessageViewModel {
         }
 
     fun sendFromSubreddit(context: Context, subreddit: String) {
-        getPostFromSubreddit(context, subreddit)
+        val url = "https://" + context.getString(R.string.reddit_base_url) + subreddit + "/hot.json"
+        getPostFromSubreddit(context, url, true)
     }
 
-    private fun getPostFromSubreddit(context: Context, subreddit: String) {
-        val url = "https://" + context.getString(R.string.reddit_base_url) + subreddit + "/hot.json"
+    private fun getPostFromSubreddit(context: Context, url: String, isPostRandom: Boolean) {
 
         val request = Request.Builder()
                 .url(url)
@@ -55,8 +55,18 @@ class MessageViewModel {
                 if (!response.isSuccessful) {
                     Log.e("WEBHOOK", "Unexpected code $response")
                 } else {
-                    val jsonToSend = treatRedditResponse(response)
-                    sendToDiscord(context, jsonToSend.toString())
+                    if(isPostRandom) {
+                        val jsonToSend = treatRedditResponse(response)
+                        sendToDiscord(context, jsonToSend.toString())
+                    } else {
+                        val jsonToSend = JSONArray(response.body()?.string())
+                                .getJSONObject(0)
+                                .getJSONObject("data")
+                                .getJSONArray("children")
+                                .getJSONObject(0)
+                                .getJSONObject("data")
+                        sendToDiscord(context, formatBody(jsonToSend).toString())
+                    }
                 }
             }
         })
@@ -88,5 +98,10 @@ class MessageViewModel {
         singleEmbed.put("image", imageJson)
         body.put("embeds", JSONArray().put(singleEmbed))
         return body
+    }
+
+    fun sendCustomPost(context: Context, postUrl: String) {
+        val url = postUrl.substringBefore("?utm")
+        getPostFromSubreddit(context, "$url.json", false)
     }
 }
