@@ -81,12 +81,13 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/reddit"
-        android:layout_marginEnd="10dp"
         app:layout_constraintTop_toTopOf="@id/send_from_subreddit"
         app:layout_constraintBottom_toBottomOf="@id/send_from_subreddit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/send_from_subreddit"
-        app:layout_constraintHorizontal_chainStyle="packed"/>
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp" />
 
     <Button
         android:id="@+id/send_from_subreddit"
@@ -98,6 +99,52 @@
         android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@id/tv_subreddit_base_url"
         app:layout_constraintStart_toEndOf="@id/reddit_logo"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintTop_toBottomOf="@id/send_from_subreddit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_send_subreddit_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/send_particular_post"
+        app:layout_constraintTop_toBottomOf="@id/divider2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/te_custom_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/custom_post_url_hint"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/tv_send_subreddit_post"
+        app:layout_constraintStart_toEndOf="@id/tv_subreddit_base_url"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/send_custom_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/redditColor"
+        android:textColor="@color/colorAccent"
+        android:text="@string/send"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/te_custom_post"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

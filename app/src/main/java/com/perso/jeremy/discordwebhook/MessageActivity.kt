@@ -14,6 +14,8 @@ class MessageActivity : AppCompatActivity() {
     private lateinit var mCustomMessageSendButton: Button
     private lateinit var mCustomSubredditEditText: EditText
     private lateinit var mCustomSubredditSendButton: Button
+    private lateinit var mCustomPostEditText: EditText
+    private lateinit var mCustomPostSendButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,8 @@ class MessageActivity : AppCompatActivity() {
         mCustomMessageSendButton = findViewById(R.id.custom_message_send)
         mCustomSubredditEditText = findViewById(R.id.te_custom_subreddit)
         mCustomSubredditSendButton = findViewById(R.id.send_from_subreddit)
+        mCustomPostEditText = findViewById(R.id.te_custom_post)
+        mCustomPostSendButton = findViewById(R.id.send_custom_post)
 
         mCustomMessageSendButton.setOnClickListener {
             val message = mCustomMessageEditText.text.toString()
@@ -40,6 +44,13 @@ class MessageActivity : AppCompatActivity() {
                 mMessageViewModel.sendFromSubreddit(this, subreddit)
             }
 
+        }
+
+        mCustomPostSendButton.setOnClickListener {
+            val postUrl = mCustomPostEditText.text.toString()
+            if(!TextUtils.isEmpty(postUrl)){
+                mMessageViewModel.sendCustomPost(this, postUrl)
+            }
         }
     }
 }

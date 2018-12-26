@@ -8,4 +8,6 @@
     <string name="or">ou</string>
     <string name="reddit_base_url">www.reddit.com/r/</string>
     <string name="your_subreddit">votre subreddit</string>
+    <string name="send_particular_post">Envoyer un post particulier</string>
+    <string name="custom_post_url_hint">URL de votre post</string>
 </resources>
