@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        saveWebhookToSharedPrefs("https://discordapp.com/api/webhooks/521296946372149261/FJi80lvKLG-Fw4-BupQ-SkEKCG2wOQ8lMu2TaVFwNb0ZD3JywA4hODA_A1U2pePgCv8T")
+        val intent = Intent(this, MessageActivity::class.java)
+        startActivity(intent)
         setContentView(R.layout.activity_main)
         initViews()
     }
